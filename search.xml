@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2019/12/05/hello-world/"/>
+      <url>/2019/12/05/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server$ hexo server2$ hexo server4$ hexo server3</code></pre><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具 </category>
+          
+          <category> hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+            <tag> k8s </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>frp使用</title>
+      <link href="/2019/11/15/frp%E4%BD%BF%E7%94%A8/"/>
+      <url>/2019/11/15/frp%E4%BD%BF%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<h1 id="内网穿透-frp"><a href="#内网穿透-frp" class="headerlink" title="内网穿透 frp"></a>内网穿透 frp</h1><p>frp 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp, http, https 协议。 官方中文文档在 这里，项目主页在 这里。</p><p>官方文档写得非常详细，建议移步阅读。其区分 服务端 与 客户端 ，以下是简化的部署步骤。</p><p>服务端<br>到 版本页 进行下载，此处拿最新的。服务端需要搭建在一台具有 固定公网IP 的服务器。</p><h2 id="自行选择相应的平台"><a href="#自行选择相应的平台" class="headerlink" title="自行选择相应的平台"></a>自行选择相应的平台</h2><p>$ cd /data/ &amp;&amp; wget <a href="https://github.com/fatedier/frp/releases/download/v0.20.0/frp_0.20.0_linux_amd64.tar.gz" target="_blank" rel="noopener">https://github.com/fatedier/frp/releases/download/v0.20.0/frp_0.20.0_linux_amd64.tar.gz</a></p><p> 解压出来<br>$ tar -xf frp_0.20.0_linux_amd64.tar.gz<br>$ cd frp_0.20.0_linux_amd64</p><h2 id="修改-frps-ini-服务端设置"><a href="#修改-frps-ini-服务端设置" class="headerlink" title="修改 frps.ini 服务端设置"></a>修改 frps.ini 服务端设置</h2><p>$ vim frps.ini<br>[common]<br>bind_port = 7000<br>privilege_token = 112233445566<br>privilege_mode = true<br>编辑启动服务文件：/etc/systemd/system/frps.service</p><p>[Unit]<br>Description=frps daemon</p><p>[Service]<br>Type=simple<br>ExecStart=/data/frp_0.20.0_linux_amd64/frps -c /data/frp_0.20.0_linux_amd64/frps.ini</p><p>[Install]<br>WantedBy=multi-user.target<br>启动服务即可</p><p>$ sudo systemctl start frps.service<br>$ sudo systemctl enable frps.service<br>客户端<br>客户端即是公司内部的服务器，同样选择在一台 ubuntu 系统来部署。</p><p>下载并解压 ，修改配置</p><p>$ cd /data/ &amp;&amp; wget <a href="https://github.com/fatedier/frp/releases/download/v0.20.0/frp_0.20.0_linux_amd64.tar.gz" target="_blank" rel="noopener">https://github.com/fatedier/frp/releases/download/v0.20.0/frp_0.20.0_linux_amd64.tar.gz</a></p><h1 id="解压出来"><a href="#解压出来" class="headerlink" title="解压出来"></a>解压出来</h1><p>$ tar -xf frp_0.20.0_linux_amd64.tar.gz<br>$ cd frp_0.20.0_linux_amd64</p><h1 id="修改-frpc-ini-客户端设置"><a href="#修改-frpc-ini-客户端设置" class="headerlink" title="修改 frpc.ini 客户端设置"></a>修改 frpc.ini 客户端设置</h1><p>$ vim frpc.ini<br>[common]<br>server_addr = x.x.x.x # 服务端的公网IP<br>server_port = 7000<br>privilege_token = 112233445566<br>同样，编辑服务启动文件：/etc/systemd/system/frpc.service</p><p>[Unit]<br>Description=frpc daemon</p><p>[Service]<br>Type=simple<br>ExecStart=/data/frp_0.20.0_linux_amd64/frpc -c /data/frp_0.20.0_linux_amd64/frpc.ini</p><p>[Install]<br>WantedBy=multi-user.target<br>启动服务即可</p><p>$ sudo systemctl start frps.service<br>$ sudo systemctl enable frps.service<br>到此，服务端 与 客户端的配置已经完成。</p><p>注意，服务端的防火墙要允许7000端口访问，如果有额外开其他端口，也要一并放行。</p><p>测试<br>假设从外网连接 公司内网 客户端的 ubuntu 服务器，则可以添加以下设置。</p><h1 id="客户端配置文件"><a href="#客户端配置文件" class="headerlink" title="客户端配置文件"></a>客户端配置文件</h1><p>$ vim /data/frp_0.20.0_linux_amd64/frpc.ini<br>[common]<br>server_addr = x.x.x.x # 服务端的公网IP<br>server_port = 7000<br>privilege_token = 112233445566</p><h1 id="以下是新添加的"><a href="#以下是新添加的" class="headerlink" title="以下是新添加的"></a>以下是新添加的</h1><p>[ssh]<br>type = tcp<br>local_ip = 127.0.0.1<br>local_port = 22<br>remote_port = 9167<br>重启客户端服务</p><p>$ sudo systemctl restart frpc.service<br>接着从外网访问即可。</p><p>$ ssh -p 9167 <a href="mailto:user@x.x.x.x" target="_blank" rel="noopener">user@x.x.x.x</a><br>VPN设置<br>借助 docker-ipsec-vpn-server 这个项目来实现。</p><p>在客户端的服务器上安装 docker ，如果 docker 不太记得，可以参考 这里；使用天朝内的源。</p><p>拉取镜像</p><p>$ docker pull hwdsl2/ipsec-vpn-server<br>创建环境变量</p><h1 id="假设服务放在-srv-目录"><a href="#假设服务放在-srv-目录" class="headerlink" title="假设服务放在 /srv 目录"></a>假设服务放在 /srv 目录</h1><p>$ sudo mkdir -pv /srv/vpn</p><p>$ sudo vim /srv/vpn/vpn.env<br>VPN_IPSEC_PSK=your_ipsec_pre_shared_key # 共享密钥<br>VPN_USER=your_vpn_username<br>VPN_PASSWORD=your_vpn_password<br>创建 docker 容器</p><p>$ docker run <br>    –name ipsec-vpn-server <br>    –env-file /srv/vpn/vpn.env <br>    –restart=always <br>    -p 500:500/udp <br>    -p 4500:4500/udp <br>    -v /lib/modules:/lib/modules:ro <br>    -d –privileged <br>    hwdsl2/ipsec-vpn-server<br>在服务端的机器上允许 500,4500 端口的访问。</p><h1 id="假设是-ubuntu-系统"><a href="#假设是-ubuntu-系统" class="headerlink" title="假设是 ubuntu 系统"></a>假设是 ubuntu 系统</h1><p>$ sudo ufw allow proto udp from any to any port 500,4500 comment ‘l2tp vpn’<br>接着在手机上测试下，类型选择 L2TP/IPSec PSK，填写 公网IP，共享密钥，用户名 和 密码 。</p><p>多用户账户支持<br>想让上面的VPN支持多用户，需要进入容器内进行设置，官方说明在 这里 。</p><p>$ docker exec -it ipsec-vpn-server /bin/bash<br>在容器内安装文本编辑软件 ，建议使用 nano ，不懂的可以直接装 vim</p><h1 id="在容器内执行"><a href="#在容器内执行" class="headerlink" title="在容器内执行"></a>在容器内执行</h1><p>$ apt-get update &amp;&amp; apt-get install nano<br>需要编辑两个文件，详细说明在 这里 ，分别是 /etc/ppp/chap-secrets</p><h1 id="注意是容器内的文件噢"><a href="#注意是容器内的文件噢" class="headerlink" title="注意是容器内的文件噢"></a>注意是容器内的文件噢</h1><p>$ nano /etc/ppp/chap-secrets<br>“test” l2tpd “test” *</p><h1 id="“你的VPN用户名1”-l2tpd-“你的VPN密码1”"><a href="#“你的VPN用户名1”-l2tpd-“你的VPN密码1”" class="headerlink" title="“你的VPN用户名1”  l2tpd  “你的VPN密码1”  *"></a>“你的VPN用户名1”  l2tpd  “你的VPN密码1”  *</h1><p>接着是 /etc/ipsec.d/passwd</p><h1 id="注意是容器内的文件噢-1"><a href="#注意是容器内的文件噢-1" class="headerlink" title="注意是容器内的文件噢"></a>注意是容器内的文件噢</h1><p>$ nano vim /etc/ipsec.d/passwd<br>你的VPN用户名1:你的VPN密码1的加盐哈希值:xauth-psk<br>其中 加盐哈希值 可以通过以下命令获取，可以在别的地方生成</p><h1 id="以下命令的输出为：你的VPN密码1的加盐哈希值"><a href="#以下命令的输出为：你的VPN密码1的加盐哈希值" class="headerlink" title="以下命令的输出为：你的VPN密码1的加盐哈希值"></a>以下命令的输出为：你的VPN密码1的加盐哈希值</h1><p>openssl passwd -1 ‘你的VPN密码1’<br>注释容器中 /opt/src/run.sh 文件中的以下几行，令上述修改生效</p><h1 id="Create-VPN-credentials"><a href="#Create-VPN-credentials" class="headerlink" title="Create VPN credentials"></a>Create VPN credentials</h1><p>cat &gt; /etc/ppp/chap-secrets &lt;&lt;EOF</p><h1 id="Secrets-for-authentication-using-CHAP"><a href="#Secrets-for-authentication-using-CHAP" class="headerlink" title="Secrets for authentication using CHAP"></a>Secrets for authentication using CHAP</h1><h1 id="client-server-secret-IP-addresses"><a href="#client-server-secret-IP-addresses" class="headerlink" title="client  server  secret  IP addresses"></a>client  server  secret  IP addresses</h1><p>“$VPN_USER” l2tpd “$VPN_PASSWORD” *<br>EOF</p><p>VPN_PASSWORD_ENC=$(openssl passwd -1 “$VPN_PASSWORD”)<br>cat &gt; /etc/ipsec.d/passwd &lt;&lt;EOF<br>$VPN_USER:$VPN_PASSWORD_ENC:xauth-psk<br>EOF<br>编辑完毕后，退出容器，重启该容器即可。</p><p>$ docker restart ipsec-vpn-server<br>客户端连接的配置，参考 IPsec/L2TP 和 IPsec/XAuth ，其中 windows 的设置略为蛋疼。</p><p>小结<br>VPN的实现，略有点绕，它毕竟是免费，比花钱买 花生壳 之类的强太多了。对于具有 固定公网IP 的服务器这点而言，是付费的。</p><p>frp 的功能异常强大，完全在家里挂一台 树莓派 之类的来玩了，嘿嘿！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+          <category> network </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> frp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ubuntu离线安装docker-ce包</title>
+      <link href="/2019/11/15/ubuntu%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker-ce%E5%8C%85/"/>
+      <url>/2019/11/15/ubuntu%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker-ce%E5%8C%85/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Ubuntu下离线安装软件"><a href="#Ubuntu下离线安装软件" class="headerlink" title="Ubuntu下离线安装软件"></a>Ubuntu下离线安装软件</h1><h2 id="一-实验环境"><a href="#一-实验环境" class="headerlink" title="一.实验环境"></a>一.实验环境</h2><p>操作系统： ubuntu16 arm</p><p>server1： 172.16.0.15 能联网</p><p>server2： 172.16.0.19 不能联网</p><h2 id="二-在server1上打包docker-ce的依赖软件包"><a href="#二-在server1上打包docker-ce的依赖软件包" class="headerlink" title="二.在server1上打包docker-ce的依赖软件包"></a>二.在server1上打包docker-ce的依赖软件包</h2><h3 id="1-添加阿里云源"><a href="#1-添加阿里云源" class="headerlink" title="1.添加阿里云源"></a>1.添加阿里云源</h3><p>添加docker-ce源</p><pre><code class="bash">cat &gt; /etc/apt/sources.list.d/docker.list &lt;&lt;EOFdeb [arch=arm64] https://mirrors.aliyun.com/docker-ce/linux/ubuntu xenial stable EOF</code></pre><p>添加系统源</p><pre><code class="bash">cat &gt;  /etc/apt/sources.list &lt;&lt;EOFdeb https://mirrors.ustc.edu.cn/ubuntu-ports/ xenial main restricted universe multiversedeb https://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-updates main restricted universe multiversedeb https://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-backports main restricted universe multiversedeb https://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-security main restricted universe multiversedeb https://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-proposed main restricted universe multiverseEOF</code></pre><p>添加完毕后及时更新源</p><pre><code class="bash">apt update</code></pre><h3 id="2-选择需要安装的版本"><a href="#2-选择需要安装的版本" class="headerlink" title="2.选择需要安装的版本"></a>2.选择需要安装的版本</h3><p>有两种方式可以查看指定软件的版本</p><pre><code class="bash"># 第一种可以看到已安装的版本以及推荐默认版本apt-cache policy docker-ce# 第一种更直观显示所有版本apt-cache madison docker-ce</code></pre><p>这里选择默认最新版本： docker-ce=5:19.03.4<del>3-0</del>ubuntu-xenial</p><h3 id="3-下载docker-ce包与依赖包"><a href="#3-下载docker-ce包与依赖包" class="headerlink" title="3.下载docker-ce包与依赖包"></a>3.下载docker-ce包与依赖包</h3><p>确认依赖包名以及版本号</p><pre><code class="bash">apt-cache depends --recurse --no-recommends --no-suggests --no-conflicts --no-breaks --no-replaces --no-enhances docker-ce=5:19.03.4~3-0~ubuntu-xenialapt-cache depends --recurse --no-recommends --no-suggests --no-conflicts --no-breaks --no-replaces --no-enhances docker-ce=5:19.03.4~3-0~ubuntu-xenial | grep &quot;^\w&quot; | sort -u</code></pre><p>确认无误，正式开始创建文件夹装备下载</p><pre><code class="bash">mkdir -p /var/docker-cecd /var/docker-ceapt-get download $(apt-cache depends --recurse --no-recommends --no-suggests --no-conflicts --no-breaks --no-replaces --no-enhances docker-ce=5:19.03.4~3-0~ubuntu-xenial | grep &quot;^\w&quot; | sort -u)# 在麒麟系统上部分依赖包名有冲突，并且已经安装，不需要再下载，因此要排除# apt-get download $(apt-cache depends --recurse --no-recommends --no-suggests --no-conflicts --no-breaks --no-replaces --no-enhances docker-ce | grep &quot;^\w&quot; | sort -u | grep -v libattr1| grep -v libgcrypt20 | grep -v gcc-6-base | grep -v libpcre3 | grep -v libsecurity1 | grep -v libselinux1 | grep -v libnfnetlink0 | grep -v libacl1| grep -v libgcc1)</code></pre><h3 id="4-创建依赖索引"><a href="#4-创建依赖索引" class="headerlink" title="4.创建依赖索引"></a>4.创建依赖索引</h3><p>此步骤需要dpkg-dev包下的<code>dpkg-scanpackages</code>命令</p><pre><code class="bash">apt install -y dpkg-devdpkg-scanpackages . | gzip -9c &gt; Packages.gz</code></pre><h4 id="5-打包当前目录"><a href="#5-打包当前目录" class="headerlink" title="5.打包当前目录"></a>5.打包当前目录</h4><pre><code class="bash">cd /vartar -zcf /var/docker-ce-kylin2000+.tar.gz  /var/docker-ce</code></pre><h2 id="三、在server2上使用打包的文件安装源"><a href="#三、在server2上使用打包的文件安装源" class="headerlink" title="三、在server2上使用打包的文件安装源"></a>三、在server2上使用打包的文件安装源</h2><p>1.通过scp，U盘等方式拷贝到server2上</p><pre><code class="bash">tar  -zxf    docker-ce-kylin2000+.tar.gz   -C  /tmp</code></pre><blockquote><p>这里的/tmp可以跟换成其他地址，尽量放在所有用户能访问的地方</p></blockquote><p>2.解压搭建完本地源，修改配置文件指向该地址</p><pre><code class="bash"># 备份当前源配置cp /etc/apt/sources.list    /etc/apt/sources.list.bakcat&gt; /etc/apt/sources.list&lt;&lt;EOFdeb [trusted=yes] file:///tmp/docker-ce/    ./EOF</code></pre><p>3.修改完毕后，只要再更新源，即可安装指定的docker-ce</p><pre><code class="bash">apt cleanapt updateapt install -y docker-ce</code></pre><p>4.安装完成后即可还原最初的镜像仓库</p><pre><code class="bash">cp  /etc/apt/sources.list.bak   /etc/apt/sources.listrm  -rf  /tmp/docker-ce</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+          <category> system </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+            <tag> ubuntu </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
