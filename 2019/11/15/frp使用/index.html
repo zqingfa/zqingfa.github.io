@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Hello World | zhangqf</title>
-  <meta name="keywords" content=" docker , k8s ">
-  <meta name="description" content="Hello World | zhangqf">
+  <title>frp使用 | zhangqf</title>
+  <meta name="keywords" content=" frp ">
+  <meta name="description" content="frp使用 | zhangqf">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="简介zqingfa的个人博客，主要为了记录自己工作中遇到的一些问题，以及督促自己记录。">
 <meta property="og:type" content="website">
@@ -299,9 +299,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-frp使用" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Hello World</h1>
+        <h1 class="article-title">frp使用</h1>
     
     <div class="article-meta">
         
@@ -309,30 +309,28 @@
         
         <span class="book">
             
-                <a  data-rel="工具">工具</a>/
+                <a  data-rel="linux">linux</a>/
             
-                <a  data-rel="hexo">hexo</a>
+                <a  data-rel="network">network</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a class="color2">docker</a>
-            
-            <a class="color4">k8s</a>
+            <a class="color4">frp</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-12-05 02:06:11'>2019-12-05 02:24</time>
+        创建时间:<time class="date" title='更新时间: 2019-12-05 02:56:28'>2019-11-15 17:58</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:81</span>
+        <span>字数:486</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -351,7 +349,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#内网穿透-frp"><span class="toc-text">内网穿透 frp</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#服务端"><span class="toc-text">服务端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#自行选择相应的平台"><span class="toc-text">自行选择相应的平台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改-frps-ini-服务端设置"><span class="toc-text">修改 frps.ini 服务端设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#客户端"><span class="toc-text">客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#测试"><span class="toc-text">测试</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -367,18 +365,62 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server
-$ hexo server2
-$ hexo server4
-$ hexo server3</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h1 id="内网穿透-frp"><a href="#内网穿透-frp" class="headerlink" title="内网穿透 frp"></a>内网穿透 frp</h1><pre><code>frp 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp, http, https 协议。 官方中文文档在 这里，项目主页在 这里。
+
+官方文档写得非常详细，建议移步阅读。其区分 服务端 与 客户端 ，以下是简化的部署步骤。</code></pre><h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a><code>服务端</code></h2><pre><code>到 `版本页` 进行下载，此处拿最新的。服务端需要搭建在一台具有 固定公网IP 的服务器。</code></pre><h3 id="自行选择相应的平台"><a href="#自行选择相应的平台" class="headerlink" title="自行选择相应的平台"></a>自行选择相应的平台</h3><pre><code class="bash">cd /data/ &amp;&amp; wget https://github.com/fatedier/frp/releases/download/v0.20.0/frp_0.20.0_linux_amd64.tar.gz
+
+#  解压出来
+tar -xf frp_0.20.0_linux_amd64.tar.gz
+cd frp_0.20.0_linux_amd64</code></pre>
+<h3 id="修改-frps-ini-服务端设置"><a href="#修改-frps-ini-服务端设置" class="headerlink" title="修改 frps.ini 服务端设置"></a>修改 frps.ini 服务端设置</h3><pre><code class="bash">cat &gt; frps.ini &lt;&lt;EOF
+[common]
+bind_port = 7000
+privilege_token = 112233445566
+privilege_mode = true
+EOF
+
+# 编辑启动服务文件：
+cat &gt;/etc/systemd/system/frps.service &lt;&lt;EOF
+[Unit]
+Description=frps daemon
+
+[Service]
+Type=simple
+ExecStart=/data/frp_0.20.0_linux_amd64/frps -c /data/frp_0.20.0_linux_amd64/frps.ini
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# 启动服务即可
+ sudo systemctl start frps.service
+ sudo systemctl enable frps.service</code></pre>
+<h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a><code>客户端</code></h2><p>客户端即是公司内部的服务器，同样选择在一台 ubuntu 系统来部署。</p>
+<pre><code class="bash"># 客户端配置文件
+cat &gt; /data/frp_0.20.0_linux_amd64/frpc.ini &lt;&lt;EOF
+[common]
+server_addr = x.x.x.x # 服务端的公网IP
+server_port = 7000
+privilege_token = 112233445566
+
+# 以下是新添加的
+[ssh]
+type = tcp
+local_ip = 127.0.0.1
+local_port = 22
+remote_port = 9167
+
+EOF</code></pre>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>到此，服务端 与 客户端的配置已经完成。<br>注意，服务端的防火墙要允许7000端口访问，如果有额外开其他端口，也要一并放行。  </p>
+<p>假设从外网连接 公司内网 客户端的 ubuntu 服务器，则可以添加以下设置。  </p>
+<pre><code class="bash"># 重启客户端服务
+
+ sudo systemctl restart frpc.service
+# 接着从外网访问即可。
+
+ ssh -p 9167 user@x.x.x.x</code></pre>
+<p>如无错误，已经可以访问内部服务器</p>
+<p>frp 的功能异常强大，完全在家里挂一台 树莓派 之类的来玩了，嘿嘿！</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 zhangqingfa@qq.com </span>
@@ -392,12 +434,12 @@ $ hexo server3</code></pre>
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>Hello World</p>
-    <p><span class="copy-title">文章字数:</span><span class="post-count">81</span></p>
+    <p><span class="copy-title">文章标题:</span>frp使用</p>
+    <p><span class="copy-title">文章字数:</span><span class="post-count">486</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="zhang qingfa">zhang qingfa</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-12-05, 02:24:47</p>
-    <p><span class="copy-title">最后更新:</span>2019-12-05, 02:06:11</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/12/05/hello-world/" title="Hello World">https://zqingfa.github.io/2019/12/05/hello-world/</a>
+    <p><span class="copy-title">发布时间:</span>2019-11-15, 17:58:41</p>
+    <p><span class="copy-title">最后更新:</span>2019-12-05, 02:56:28</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/11/15/frp%E4%BD%BF%E7%94%A8/" title="frp使用">https://zqingfa.github.io/2019/11/15/frp%E4%BD%BF%E7%94%A8/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
