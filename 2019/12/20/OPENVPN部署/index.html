@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Hello World | zhangqf</title>
-  <meta name="keywords" content=" docker , k8s ">
-  <meta name="description" content="Hello World | zhangqf">
+  <title>OPENVPN部署文档 | zhangqf</title>
+  <meta name="keywords" content=" openvpn ">
+  <meta name="description" content="OPENVPN部署文档 | zhangqf">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="photo">
@@ -309,9 +309,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-OPENVPN部署" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Hello World</h1>
+        <h1 class="article-title">OPENVPN部署文档</h1>
     
     <div class="article-meta">
         
@@ -319,30 +319,28 @@
         
         <span class="book">
             
-                <a  data-rel="工具">工具</a>/
+                <a  data-rel="linux">linux</a>/
             
-                <a  data-rel="hexo">hexo</a>
+                <a  data-rel="network">network</a>
             
         </span>
         
         
         <span class="tag">
             
-            <a class="color2">docker</a>
-            
-            <a class="color4">k8s</a>
+            <a class="color3">openvpn</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-12-05 02:06:11'>2019-12-05 02:24</time>
+        创建时间:<time class="date" title='更新时间: 2019-12-20 20:23:57'>2019-12-20 17:58</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:81</span>
+        <span>字数:861</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -372,7 +370,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#OPENVPN部署文档"><span class="toc-text">OPENVPN部署文档</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-部署环境"><span class="toc-text">1.部署环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-安装软件"><span class="toc-text">2.安装软件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-服务端配置"><span class="toc-text">3.服务端配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-生成CA证书、服务端、客户端证书"><span class="toc-text">3.1 生成CA证书、服务端、客户端证书</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-配置文件"><span class="toc-text">3.2 配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-修改iptables"><span class="toc-text">3.3 修改iptables</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-打开Linux系统内核转发"><span class="toc-text">3.4 打开Linux系统内核转发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-启动openvpn"><span class="toc-text">3.4 启动openvpn</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-客户端安装配置"><span class="toc-text">4. 客户端安装配置</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -388,18 +386,121 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;</code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server
-$ hexo server2
-$ hexo server4
-$ hexo server3</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h1 id="OPENVPN部署文档"><a href="#OPENVPN部署文档" class="headerlink" title="OPENVPN部署文档"></a>OPENVPN部署文档</h1><h2 id="1-部署环境"><a href="#1-部署环境" class="headerlink" title="1.部署环境"></a>1.部署环境</h2><ul>
+<li>服务器： Linux网关服务器</li>
+<li>IP地址： 192.168.31.1（外） 192.168.123.1（内）</li>
+<li>软件版本： openvpn-2.2.2</li>
+<li>配置时间同步： /usr/sbin/ntpdate pool.ntp.org</li>
+</ul>
+<h2 id="2-安装软件"><a href="#2-安装软件" class="headerlink" title="2.安装软件"></a>2.安装软件</h2><pre><code class="bash">yum -y install openvpn lzo</code></pre>
+<h2 id="3-服务端配置"><a href="#3-服务端配置" class="headerlink" title="3.服务端配置"></a>3.服务端配置</h2><h3 id="3-1-生成CA证书、服务端、客户端证书"><a href="#3-1-生成CA证书、服务端、客户端证书" class="headerlink" title="3.1 生成CA证书、服务端、客户端证书"></a>3.1 生成CA证书、服务端、客户端证书</h3><pre><code class="bash"># 进入源码包目录
+cd openvpn-2.2.2/easy-rsa/2.0/
+cp vars vars.bak
+vim vars
+#修改对应默认配置
+&gt; export KEY_COUNTRY=&quot;CN&quot;
+&gt; export KEY_PROVINCE=&quot;BJ&quot;
+&gt; export KEY_CITY=&quot;BeiJing&quot;
+&gt; export KEY_ORG=&quot;gw&quot;
+&gt; export KEY_EMAIL=&quot;zqingfa@gmail.com&quot;
+&gt; export KEY_CN=CN
+&gt; export KEY_NAME=gw
+&gt; export KEY_OU=gw
+&gt; export PKCS11_MODULE_PATH=
+&gt; export PKCS11_PIN=
+source  vars
+./clean-all
+#生成服务端证书和密钥文件
+./build-ca
+ll keys/
+#生成服务端证书和密钥文件
+./build-key-server server
+#生成客户端证书和密钥文件
+#如果退出了bash，之后需要加新密钥，需要重新source  vars，但是不要./clean-all
+./build-key test
+ll keys/
+#如果需要加密客户端密钥：
+./build-key-pass ett
+#生成交换密钥协议文件
+ ./build-dh
+ll keys/dh1024.pem
+#为防止恶意攻击如DOS，UDP flooding，生成一个“HMAC firewall”
+openvpn --genkey --secret keys/ta.key</code></pre>
+<h3 id="3-2-配置文件"><a href="#3-2-配置文件" class="headerlink" title="3.2 配置文件"></a>3.2 配置文件</h3><pre><code class="bash">mkdir /etc/openvpn
+cd openvpn-2.2.2/easy-rsa/2.0/
+cp -ap keys /etc/openvpn
+cd ../../sample-config-files/
+cp client.conf server.conf /etc/openvpn/
+# 配置文件
+cd /etc/openvpn/
+cp server.conf server.conf.ori
+# 配置参数：
+egrep -v &quot;;|#|^$&quot; server.conf
+&gt; local 192.168.31.1
+&gt; port 52115
+&gt; proto tcp
+&gt; dev tun
+&gt; ca /etc/openvpn/keys/ca.crt
+&gt; cert /etc/openvpn/keys/server.crt
+&gt; key /etc/openvpn/keys/server.key
+&gt; dh /etc/openvpn/keys/dh1024.pem
+&gt; server 10.8.0.0 255.255.255.0
+&gt; push &quot;route 192.168.123.0 255.255.255.0&quot;
+&gt; push &quot;route 192.168.2.0 255.255.255.0&quot;
+&gt; push &quot;route 192.168.3.0 255.255.255.0&quot;
+&gt; push &quot;route 192.168.4.0 255.255.255.0&quot;
+&gt; ifconfig-pool-persist ipp.txt
+&gt; keepalive 10 120
+&gt; comp-lzo
+&gt; persist-key
+&gt; persist-tun
+&gt; status openvpn-status.log
+&gt; verb 3
+&gt; client-to-client
+&gt; duplicate-cn
+&gt; log /var/log/openvpn.log</code></pre>
+<h3 id="3-3-修改iptables"><a href="#3-3-修改iptables" class="headerlink" title="3.3 修改iptables"></a>3.3 修改iptables</h3><pre><code class="bash">vim /etc/sysconfig/iptables
+# 添加：
+-A INPUT -p tcp --dport 52115 -j ACCEPT
+-A POSTROUTING -s  10.8.0.0/24  -o enp11s0f0 -j MASQUERADE
+# 重启iptables
+service iptables restart</code></pre>
+<p>或者直接运行如下命令</p>
+<pre><code class="bash">iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o enp11s0f0 -j MASQUERADE</code></pre>
+<h3 id="3-4-打开Linux系统内核转发"><a href="#3-4-打开Linux系统内核转发" class="headerlink" title="3.4 打开Linux系统内核转发"></a>3.4 打开Linux系统内核转发</h3><pre><code class="bash">vim /etc/sysctl.conf
+net.ipv4.ip_forward = 1
+# 重载配置生效
+sysctl -p</code></pre>
+<h3 id="3-4-启动openvpn"><a href="#3-4-启动openvpn" class="headerlink" title="3.4 启动openvpn"></a>3.4 启动openvpn</h3><p>启动VPN，注意/etc/openvpn/下的*.conf文件，不能有server配置以外的配置文件。</p>
+<pre><code class="bash">/etc/init.d/openvpn start
+#编译安装启动方法：
+/usr/local/sbin/openvpn --config  /etc/openvpn/server.conf &amp;
+#开机自启动
+echo &#39;/usr/local/sbin/openvpn --config  /etc/openvpn/server.conf &amp;&#39; &gt;&gt; /etc/rc.local
+#openvpn自带脚本的启动方法：
+/usr/local/sbin/openvpn --daemon --writepid /var/run/openvpn/server.pid --config server.conf  --cd /etc/openvpn</code></pre>
+<h2 id="4-客户端安装配置"><a href="#4-客户端安装配置" class="headerlink" title="4. 客户端安装配置"></a>4. 客户端安装配置</h2><pre><code class="bash"># 自行百度安装对应操作系统的OPENVPN客户端
+# 配置
+cd openvpn-2.2.2/easy-rsa/2.0/keys
+# 拷贝生成的客户端证书
+sz -y ca.crt test.crt test.key
+# 将上述文件拷贝到openvpn客户端安装路径下的config目录,新建一个文件夹存放，例如新建一个test文件夹
+# 在test文件夹新建openvpn的配置文件test.ovpn，配置如下：
+&gt; client
+&gt; dev tun
+&gt; proto tcp
+&gt; remote 140.206.0.0 52115
+&gt; resolv-retry infinite
+&gt; nobind
+&gt; persist-key
+&gt; persist-tun
+&gt; ca ca.crt
+&gt; cert test.crt
+&gt; key test.key
+&gt; ns-cert-type server
+&gt; comp-lzo
+&gt; verb 3</code></pre>
+<p>配置完成，打开openvpn客户端拨号连接。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 zhangqingfa@qq.com </span>
@@ -413,12 +514,12 @@ $ hexo server3</code></pre>
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>Hello World</p>
-    <p><span class="copy-title">文章字数:</span><span class="post-count">81</span></p>
+    <p><span class="copy-title">文章标题:</span>OPENVPN部署文档</p>
+    <p><span class="copy-title">文章字数:</span><span class="post-count">861</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="zhang qingfa">zhang qingfa</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-12-05, 02:24:47</p>
-    <p><span class="copy-title">最后更新:</span>2019-12-05, 02:06:11</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/12/05/hello-world/" title="Hello World">https://zqingfa.github.io/2019/12/05/hello-world/</a>
+    <p><span class="copy-title">发布时间:</span>2019-12-20, 17:58:41</p>
+    <p><span class="copy-title">最后更新:</span>2019-12-20, 20:23:57</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/12/20/OPENVPN%E9%83%A8%E7%BD%B2/" title="OPENVPN部署文档">https://zqingfa.github.io/2019/12/20/OPENVPN%E9%83%A8%E7%BD%B2/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
