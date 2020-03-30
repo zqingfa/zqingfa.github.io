@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>frp使用 | zhangqf</title>
-  <meta name="keywords" content=" frp ">
-  <meta name="description" content="frp使用 | zhangqf">
+  <title>rh练习1 | zhangqf</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="rh练习1 | zhangqf">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="简介zqingfa的个人博客，主要为了记录自己工作中遇到的一些问题，以及督促自己记录。">
 <meta property="og:type" content="website">
@@ -287,9 +287,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-frp使用" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-rh练习1" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">frp使用</h1>
+        <h1 class="article-title">rh练习1</h1>
     
     <div class="article-meta">
         
@@ -297,28 +297,20 @@
         
         <span class="book">
             
-                <a  data-rel="linux">linux</a>/
-            
-                <a  data-rel="network">network</a>
+                <a  data-rel="linux">linux</a>
             
         </span>
         
         
-        <span class="tag">
-            
-            <a class="color4">frp</a>
-            
-        </span>
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2020-03-30 23:28:43'>2020-03-30 16:41</time>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-01-06 01:04:54'>2019-11-15 17:58</time>
-        
-    </div>
-    <div class="article-meta">
-        
-        <span>字数:574</span>
+        <span>字数:1.6k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -348,7 +340,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#内网穿透-frp"><span class="toc-text">内网穿透 frp</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-服务端"><span class="toc-text">1. 服务端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-选择相应的平台"><span class="toc-text">1.1. 选择相应的平台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-修改-frps-ini-服务端设置"><span class="toc-text">1.2. 修改 frps.ini 服务端设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-客户端"><span class="toc-text">2. 客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-下载客户端"><span class="toc-text">2.1. 下载客户端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-修改-frpc-ini-客户端设置"><span class="toc-text">2.2. 修改 frpc.ini 客户端设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-测试"><span class="toc-text">3. 测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-客户端配置文件"><span class="toc-text">3.1. 客户端配置文件</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#准备rh"><span class="toc-text">准备rh</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0-root密码重置"><span class="toc-text">0. root密码重置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-SELinux-必须运行在-Enforcing-模式下"><span class="toc-text">1. SELinux 必须运行在 Enforcing 模式下</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-配置-YUM-源"><span class="toc-text">2. 配置 YUM 源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-调整逻辑卷-vo-的大小"><span class="toc-text">3. 调整逻辑卷 vo 的大小</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-创建用户、组-和组成员关系"><span class="toc-text">4. 创建用户、组 和组成员关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-复制文件并改权限"><span class="toc-text">5. 复制文件并改权限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-配置定时任务"><span class="toc-text">6. 配置定时任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-创建一个目录-home-admins-使之具有下面的特性"><span class="toc-text">7. 创建一个目录/home/admins,使之具有下面的特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-从一个地址安装内核"><span class="toc-text">8. 从一个地址安装内核</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-配置ldap用户"><span class="toc-text">9. 配置ldap用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-配置你的系统使它是-rhgls-rhce-com-的一个-NTP-客户老段工作室"><span class="toc-text">10. 配置你的系统使它是 rhgls.rhce.com 的一个 NTP 客户老段工作室</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-配置自动挂载-LDAP-用户的家目录"><span class="toc-text">11. 配置自动挂载 LDAP 用户的家目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-创建指定UID和密码的用户"><span class="toc-text">12. 创建指定UID和密码的用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-添加交换分区"><span class="toc-text">13. 添加交换分区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-找到属于ira的文件"><span class="toc-text">14. 找到属于ira的文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-文件中查找行写入文件"><span class="toc-text">15. 文件中查找行写入文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-创建压缩包"><span class="toc-text">16. 创建压缩包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#17-按照下面的要求创建一个新的逻辑卷"><span class="toc-text">17. 按照下面的要求创建一个新的逻辑卷:</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -364,74 +356,139 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="内网穿透-frp"><a href="#内网穿透-frp" class="headerlink" title="内网穿透 frp"></a>内网穿透 frp</h1><p>frp 是一个可用于内网穿透的高性能的反向代理应用，支持 tcp, udp, http, https 协议。 官方中文文档在 这里，项目主页在 这里。</p>
-<p>官方文档写得非常详细，建议移步阅读。其区分 服务端 与 客户端 ，以下是简化的部署步骤。</p>
-<h2 id="1-服务端"><a href="#1-服务端" class="headerlink" title="1. 服务端"></a>1. <code>服务端</code></h2><p>到 <a href="https://github.com/fatedier/frp/releases" target="_blank" rel="noopener">版本页</a> 进行下载，此处拿最新的。服务端需要搭建在一台具有 固定公网IP 的服务器。</p>
-<h3 id="1-1-选择相应的平台"><a href="#1-1-选择相应的平台" class="headerlink" title="1.1. 选择相应的平台"></a>1.1. 选择相应的平台</h3><pre><code class="bash">cd /data/ &amp;&amp; wget https://github.com/fatedier/frp/releases/download/v0.20.0/frp_0.20.0_linux_amd64.tar.gz</code></pre>
-<p>解压出来</p>
-<pre><code class="bash">tar -xf frp_0.20.0_linux_amd64.tar.gz
-cd frp_0.20.0_linux_amd64</code></pre>
-<h3 id="1-2-修改-frps-ini-服务端设置"><a href="#1-2-修改-frps-ini-服务端设置" class="headerlink" title="1.2. 修改 frps.ini 服务端设置"></a>1.2. 修改 frps.ini 服务端设置</h3><p><code>vim frps.ini</code></p>
-<pre><code class="ini">[common]
-bind_port = 7000
-privilege_token = 112233445566
-privilege_mode = true</code></pre>
-<p>编辑启动服务文件：<em>/etc/systemd/system/frps.service</em></p>
-<pre><code class="ini">[Unit]
-Description=frps daemon
+        <h1 id="准备rh"><a href="#准备rh" class="headerlink" title="准备rh"></a>准备rh</h1><h2 id="0-root密码重置"><a href="#0-root密码重置" class="headerlink" title="0. root密码重置"></a>0. root密码重置</h2><p>进入grub后按e选择行末 添加一行init=/bin/sh</p>
+<pre><code class="bash">mount -o remoute,rw /
+echo &quot;xxxxxxx&quot; | passwd --stdin root
+touch /.autorelabel
+exec /sbin/init</code></pre>
+<h2 id="1-SELinux-必须运行在-Enforcing-模式下"><a href="#1-SELinux-必须运行在-Enforcing-模式下" class="headerlink" title="1. SELinux 必须运行在 Enforcing 模式下"></a>1. SELinux 必须运行在 Enforcing 模式下</h2><p>首先确认是否有selinux在运行</p>
+<pre><code class="bash">getenforce  #确认
+setenforce 1 #设置selinux生效
+vim /etc/selinux/conf #配置永久生效</code></pre>
+<h2 id="2-配置-YUM-源"><a href="#2-配置-YUM-源" class="headerlink" title="2. 配置 YUM 源"></a>2. 配置 YUM 源</h2><p>使用地址 <code>ftp://server.rhce.com/dvd</code> 作为默认的源</p>
+<pre><code class="bash">cat &gt; /etc/yum.repos.d/rhcsa.repo &lt;&lt; EOF
+[rhcsa]
+name=rhcsa
+baseurl=ftp://server.rhce.com/dvd
+enable=1
+gpgcheck=0
+EOF
+yum clean all
+yum install -y system-config-date</code></pre>
+<h2 id="3-调整逻辑卷-vo-的大小"><a href="#3-调整逻辑卷-vo-的大小" class="headerlink" title="3. 调整逻辑卷 vo 的大小"></a>3. 调整逻辑卷 vo 的大小</h2><p>调整逻辑卷 vo 的大小,它的文件系统大小应该为 290M。确保这个文件系统的内容仍然完整。</p>
+<blockquote>
+<p>注意:  分区很少能精确到和要求的大小相同,因此在范围 260M 到 320M 之间都是可接受的</p>
+</blockquote>
+<pre><code class="bash">lvextend /dev/vg0/vo -L 300M
+xfs_growfs /dev/vg0/vo</code></pre>
+<h2 id="4-创建用户、组-和组成员关系"><a href="#4-创建用户、组-和组成员关系" class="headerlink" title="4. 创建用户、组 和组成员关系"></a>4. 创建用户、组 和组成员关系</h2><p>创建下面的用户、组和组成员关系<br>名字为 adminuser 的组<br>用户 natasha,使用 adminuser 作为附属组<br>用户 harry,也使用 adminuser 作为附属组<br>用户 sarah,在系统上不能访问可交互的 shell, 且不是 adminuser 的成员,<br>natasha,harry,sarah 密码都是 redhat</p>
+<pre><code class="bash">groupadd adminuser
+useadd -G adminuser natasha
+useadd -G adminuser harry
+useadd -s /sbin/nologin sarah
+echo &quot;redhat&quot; | passwd --stdin natasha
+echo &quot;redhat&quot; | passwd --stdin harry
+echo &quot;redhat&quot; | passwd --stdin sarah</code></pre>
+<h2 id="5-复制文件并改权限"><a href="#5-复制文件并改权限" class="headerlink" title="5. 复制文件并改权限"></a>5. 复制文件并改权限</h2><p>复制文件/etc/fstab 到/var/tmp/fstab。配置/var/tmp/fstab 的权限如下:<br>文件/var/tmp/fstab 所有者是 root<br>文件/var/tmp/fstab 属于 root 组<br>文件/var/tmp/fstab 不能被任何用户执行<br>用户 natasha 可读和可写/var/tmp/fstab<br>用户 harry 既不能读也不能写/var/tmp/fstab<br>所有其他用户(现在和将来)具有读/var/tmp/fstab 的能力</p>
+<pre><code class="bash">cp /etc/fstab /var/tmp/fstab
+setfack -m u:natasha:rw- /var/tmp/fstab
+setfack -m u:harry:--- /var/tmp/fstab</code></pre>
+<h2 id="6-配置定时任务"><a href="#6-配置定时任务" class="headerlink" title="6. 配置定时任务"></a>6. 配置定时任务</h2><p>用户 natasha 必须配置一个 cron job, 当地时间每天 14:23 运行,执行:<code>/bin/echo hiya</code></p>
+<pre><code class="bash">crontab -e -u natasha
+23 14 * * * /bin/echo hiya</code></pre>
+<h2 id="7-创建一个目录-home-admins-使之具有下面的特性"><a href="#7-创建一个目录-home-admins-使之具有下面的特性" class="headerlink" title="7. 创建一个目录/home/admins,使之具有下面的特性"></a>7. 创建一个目录/home/admins,使之具有下面的特性</h2><p>/home/admins 所属组为 adminuser<br>这个目录对组 adminuser 的成员具有可读、可写和可执行,但是不是对其他任何用户。(root 可以访问系统上所有的文件和目录)在/home/admins 下创建的任何文件所属组自动设置为adminuser</p>
+<pre><code class="bash">mkdir /home/admins
+chown :adminuser /home/admins
+chmod  g+s /home/admins</code></pre>
+<h2 id="8-从一个地址安装内核"><a href="#8-从一个地址安装内核" class="headerlink" title="8. 从一个地址安装内核"></a>8. 从一个地址安装内核</h2><p>从<code>http://rhgls.rhce.com/pub/updates</code>安装合适的内核更新。下面的要求必须满足:<br>更新的内核作为系统启动的默认内核<br>原来的内核在系统启动的时候仍然有效和可引导<br>两种解决方式：</p>
+<ol>
+<li><p>在物理机上执行</p>
+<pre><code class="bash">ssh -X root@192.168.122.1
+firefox http://rhgls.rhce.com/pub/updates &amp;     #保存对应的rpm包
+rpm -ivh xxxxxxxx.rpm</code></pre>
+</li>
+<li><p>配置更新源</p>
+<pre><code class="bash"> cat &gt; /etc/yum.repos.d/update &lt;&lt; EOF
+ [update]
+ name=update
+ baseurl=http://rhgls.rhce.com/pub/updates
+ enable=1
+ gpgcheck=0
+ EOF
 
-[Service]
-Type=simple
-ExecStart=/data/frp_0.20.0_linux_amd64/frps -c /data/frp_0.20.0_linux_amd64/frps.ini
+ yum clean all
+ yum makecache
+ yum update kernel -y</code></pre>
+</li>
+</ol>
+<h2 id="9-配置ldap用户"><a href="#9-配置ldap用户" class="headerlink" title="9. 配置ldap用户"></a>9. 配置ldap用户</h2><p>系统 host.rhce.com 提供了一个 LDAP 验证服务,你的系统应该按下面的要求绑定到这个服务:<br>验证服务的基准 DN 是 dc=rhce,dc=cc<br>LDAP 用于提供账户信息和验证信息连接应该使用位于<br><code>http://host.rhce.com/pub/domain11.crt</code> 的证书加密<br>当正确的配置后,ldapuser11 可以登录你的系统,但没有家目录 直到你完成<br>autofs 题目 ldapuser11 的密码是’redhat’</p>
+<pre><code class="bash">yum install -y authconfig-gtk
+authconfig-gtk
+</code></pre>
+<h2 id="10-配置你的系统使它是-rhgls-rhce-com-的一个-NTP-客户老段工作室"><a href="#10-配置你的系统使它是-rhgls-rhce-com-的一个-NTP-客户老段工作室" class="headerlink" title="10. 配置你的系统使它是 rhgls.rhce.com 的一个 NTP 客户老段工作室"></a>10. 配置你的系统使它是 rhgls.rhce.com 的一个 NTP 客户老段工作室</h2><pre><code class="bash">yum install system-config-date
+system-config-date
+</code></pre>
+<h2 id="11-配置自动挂载-LDAP-用户的家目录"><a href="#11-配置自动挂载-LDAP-用户的家目录" class="headerlink" title="11. 配置自动挂载 LDAP 用户的家目录"></a>11. 配置自动挂载 LDAP 用户的家目录</h2><p>配置 autofs 自动挂载 LDAP 用户的家目录,如下要求:<br>host.rhce.com(192.168.122.10) 使用 NFS 共享了/home/guests 给你的系统。这个<br>文件系统包含了预先设置好的用户 ldapuser11 的家目录<br>ldapuser11 的家目录是 host.rhce.com:/home/guests/ldapuser11<br>ldapuser11 的家目录应该自动挂载到本地/home/guests 下面的<br>/home/guests/ldapuser11<br>家目录必须对用户具有可写权限<br>ldapuser11 的密码是’redhat’</p>
+<pre><code class="bash">yum install autofs
+mkdir /home/guest
+vim /etc/auto.master
+/home/guests /etc/auto.guests
+echo &quot;* -rw host.rhce.com:/home/guests/&amp;&quot; &gt; /etc/auto.guests
+##或者
+echo &quot;ldapuser11 -fstype=nfs,rw,vers=v3 host.rhce.com:/home/guests/ldapuser11&quot; &gt; /etc/auto.guests
 
-[Install]
-WantedBy=multi-user.target</code></pre>
-<p>启动服务即可</p>
-<pre><code class="bash">sudo systemctl start frps.service
-sudo systemctl enable frps.service</code></pre>
-<h2 id="2-客户端"><a href="#2-客户端" class="headerlink" title="2. 客户端"></a>2. <code>客户端</code></h2><p>客户端即是公司内部的服务器，同样选择在某一台 ubuntu 系统来部署。</p>
-<h3 id="2-1-下载客户端"><a href="#2-1-下载客户端" class="headerlink" title="2.1. 下载客户端"></a>2.1. 下载客户端</h3><p>下载并解压 ，修改配置</p>
-<pre><code class="bash">cd /data/ &amp;&amp; wget https://github.com/fatedier/frp/releases/download/v0.20.0/frp_0.20.0_linux_amd64.tar.gz</code></pre>
-<pre><code class="bash"># 解压出来
-tar -xf frp_0.20.0_linux_amd64.tar.gz
-cd frp_0.20.0_linux_amd64</code></pre>
-<h3 id="2-2-修改-frpc-ini-客户端设置"><a href="#2-2-修改-frpc-ini-客户端设置" class="headerlink" title="2.2. 修改 frpc.ini 客户端设置"></a>2.2. 修改 frpc.ini 客户端设置</h3><p><code>vim frpc.ini</code></p>
-<pre><code class="ini">[common]
-server_addr = x.x.x.x # 服务端的公网IP
-server_port = 7000
-privilege_token = 112233445566</code></pre>
-<p>同样，编辑服务启动文件：<em>/etc/systemd/system/frpc.service</em></p>
-<pre><code class="ini">[Unit]
-Description=frpc daemon
+systemctl restart autofs
+systemctl enable autofs
+</code></pre>
+<h2 id="12-创建指定UID和密码的用户"><a href="#12-创建指定UID和密码的用户" class="headerlink" title="12. 创建指定UID和密码的用户"></a>12. 创建指定UID和密码的用户</h2><p>创建一个用户 alex,uid 为 3400。这个用户的密码为 redhat</p>
+<pre><code class="bash">useradd -u 3400 alex
+echo &quot;redhat&quot; | passwd --stdin</code></pre>
+<h2 id="13-添加交换分区"><a href="#13-添加交换分区" class="headerlink" title="13. 添加交换分区"></a>13. 添加交换分区</h2><p>为你的系统上额外添加一个大小为 512M 的交换分区,这个交换分区在系统<br>启动的时候应该能自动挂载。不要移除和更改你系统上现存的交换分区。</p>
+<pre><code class="bash">fdisk /dev/vda
+n
+e
 
-[Service]
-Type=simple
-ExecStart=/data/frp_0.20.0_linux_amd64/frpc -c /data/frp_0.20.0_linux_amd64/frpc.ini
+n
+l
+5
++512M
+w
 
-[Install]
-WantedBy=multi-user.target</code></pre>
-<p>启动服务即可</p>
-<pre><code class="bash">sudo systemctl start frps.service
-sudo systemctl enable frps.service</code></pre>
-<p>到此，服务端 与 客户端的配置已经完成。</p>
-<p>注意，服务端的防火墙要允许7000端口访问，如果有额外开其他端口，也要一并放行。</p>
-<h2 id="3-测试"><a href="#3-测试" class="headerlink" title="3. 测试"></a>3. 测试</h2><p>假设从外网连接 公司内网 客户端的 ubuntu 服务器，则可以添加以下设置。</p>
-<h3 id="3-1-客户端配置文件"><a href="#3-1-客户端配置文件" class="headerlink" title="3.1. 客户端配置文件"></a>3.1. 客户端配置文件</h3><pre><code class="bash">vim /data/frp_0.20.0_linux_amd64/frpc.ini</code></pre>
-<pre><code class="ini">[common]
-server_addr = x.x.x.x # 服务端的公网IP
-server_port = 7000
-privilege_token = 112233445566
+partprobe
+mkswap /dev/vda5
+echo &quot;/dev/vda5 swap swap defaults 0 0&quot; &gt;&gt; /etc/fstab
+swapon -a
+</code></pre>
+<h2 id="14-找到属于ira的文件"><a href="#14-找到属于ira的文件" class="headerlink" title="14. 找到属于ira的文件"></a>14. 找到属于ira的文件</h2><p>找出所有所有者是 ira 的文件,并把他们拷贝到/root/findresults 目录。</p>
+<pre><code class="bash">mkdir  /root/findresults
+find / -user ira exec cp -a {} /root/findresults \;
+#或者如下
+find / -name ira exec cp -a {} /root/findresults \;
+</code></pre>
+<h2 id="15-文件中查找行写入文件"><a href="#15-文件中查找行写入文件" class="headerlink" title="15. 文件中查找行写入文件"></a>15. 文件中查找行写入文件</h2><p>在/usr/share/dict/words 中找出所有包含 seismic 的行。复制所有这些行并按照<br>原来的顺序放在文件/root/lines 中。/root/lines 应该没有空白行,所有的行必须是<br>/usr/share/dict/words 中原有行的精确复制。</p>
+<pre><code class="bash">grep seismic /usr/share/dict/words &gt; /root/lines</code></pre>
+<h2 id="16-创建压缩包"><a href="#16-创建压缩包" class="headerlink" title="16. 创建压缩包"></a>16. 创建压缩包</h2><p>创建名为/root/backup.tar.bz2 的备份文件,其中包含/usr/local 的内容,tar 必须使用 bzip2 压缩。</p>
+<pre><code class="bash">cd /usr/local
+tar cjvf /root/backup.tar.bz2 *</code></pre>
+<h2 id="17-按照下面的要求创建一个新的逻辑卷"><a href="#17-按照下面的要求创建一个新的逻辑卷" class="headerlink" title="17. 按照下面的要求创建一个新的逻辑卷:"></a>17. 按照下面的要求创建一个新的逻辑卷:</h2><p>逻辑卷命名为 database,属于卷组 datastore,且大小为 50 个扩展。<br>在卷组 datastore 的逻辑卷每个扩展的大小为 16MiB<br>使用 ext3 格式化这个新的逻辑卷.此逻辑卷在系统启动的时</p>
+<pre><code class="bash">fdisk /dev/vda
+n
+l
+6
 
-### 以下是新添加的
-[ssh]
-type = tcp
-local_ip = 127.0.0.1
-local_port = 22
-remote_port = 9167</code></pre>
-<p>重启客户端服务</p>
-<pre><code class="bash">sudo systemctl restart frpc.service</code></pre>
-<p>接着从外网访问即可。</p>
-<pre><code class="bash">ssh -p 9167 user@x.x.x.x</code></pre>
+w
+
+partprobe
+pvcreate /dev/vda6
+vgcreate -s 16M datastore /dev/sdb6
+lvcreate -n database datastore -l 50
+mkfs.ext3 /dev/datastore/database
+#如果是vfat
+# yum install -y */mkfs.vfat
+# mkfs.vfat /dev/datastore/database
+mkdir /mnt/database
+echo &quot;/dev/datastore/database /mnt/database defaults 0 0&quot; &gt;&gt; /etc/fstab
+mount -a</code></pre>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 zhangqingfa@qq.com </span>
@@ -445,12 +502,12 @@ remote_port = 9167</code></pre>
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>frp使用</p>
-    <p><span class="copy-title">文章字数:</span><span class="post-count">574</span></p>
+    <p><span class="copy-title">文章标题:</span>rh练习1</p>
+    <p><span class="copy-title">文章字数:</span><span class="post-count">1.6k</span></p>
     <p><span class="copy-title">本文作者:</span><a  title="zhang qingfa">zhang qingfa</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-11-15, 17:58:41</p>
-    <p><span class="copy-title">最后更新:</span>2020-01-06, 01:04:54</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/11/15/frp%E4%BD%BF%E7%94%A8/" title="frp使用">https://zqingfa.github.io/2019/11/15/frp%E4%BD%BF%E7%94%A8/</a>
+    <p><span class="copy-title">发布时间:</span>2020-03-30, 16:41:32</p>
+    <p><span class="copy-title">最后更新:</span>2020-03-30, 23:28:43</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/03/30/rh%E7%BB%83%E4%B9%A01/" title="rh练习1">https://zqingfa.github.io/2020/03/30/rh%E7%BB%83%E4%B9%A01/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
