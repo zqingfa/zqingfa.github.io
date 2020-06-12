@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>photo | zhangqf</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="photo | zhangqf">
+  <title>kylin系统下架设iscsi服务与使用 | zhangqf</title>
+  <meta name="keywords" content=" kylin ">
+  <meta name="description" content="kylin系统下架设iscsi服务与使用 | zhangqf">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="简介zqingfa的个人博客，主要为了记录自己工作中遇到的一些问题，以及督促自己记录。">
 <meta property="og:type" content="website">
@@ -339,24 +339,38 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+        <article id="post-kylin系统下架设iscsi服务与使用" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">photo</h1>
+        <h1 class="article-title">kylin系统下架设iscsi服务与使用</h1>
     
     <div class="article-meta">
         
         
         
+        <span class="book">
+            
+                <a  data-rel="linux">linux</a>/
+            
+                <a  data-rel="system">system</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a class="color1">kylin</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-12-05 02:07:50'>2019-12-05 02:07</time>
+        创建时间:<time class="date" title='更新时间: 2020-04-07 16:48:14'>2020-04-03 15:58</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:0</span>
+        <span>字数:712</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -386,7 +400,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#kylin系统下架设iscsi服务与使用"><span class="toc-text">kylin系统下架设iscsi服务与使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#系统基础环境"><span class="toc-text">系统基础环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务端架设"><span class="toc-text">服务端架设</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装服务程序"><span class="toc-text">安装服务程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置iSCSI-target"><span class="toc-text">配置iSCSI target</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iscsi客户端"><span class="toc-text">iscsi客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装iSCSI"><span class="toc-text">安装iSCSI</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -402,7 +416,99 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="kylin系统下架设iscsi服务与使用"><a href="#kylin系统下架设iscsi服务与使用" class="headerlink" title="kylin系统下架设iscsi服务与使用"></a>kylin系统下架设iscsi服务与使用</h1><p>iscsi是一种通过ip网络使用的块存储，通过服务端直接给其他客户端挂载使用，如同本机磁盘。</p>
+<h2 id="系统基础环境"><a href="#系统基础环境" class="headerlink" title="系统基础环境"></a>系统基础环境</h2><ol>
+<li><p>服务端</p>
+<ul>
+<li>OS：Kylin 4.0.2</li>
+<li>硬盘：<ul>
+<li>sda  20 G</li>
+<li>sdb  50 G （系统根目录）</li>
+</ul>
+</li>
+<li>网络IP： 192.168.220.137</li>
+</ul>
+</li>
+<li><p>客户端</p>
+<ul>
+<li>OS：Kylin 4.0.2</li>
+<li>硬盘：</li>
+<li>sda  50 G （系统根目录）</li>
+<li>网络IP： 192.168.220.138</li>
+</ul>
+</li>
+</ol>
+<h2 id="服务端架设"><a href="#服务端架设" class="headerlink" title="服务端架设"></a>服务端架设</h2><h3 id="安装服务程序"><a href="#安装服务程序" class="headerlink" title="安装服务程序"></a>安装服务程序</h3><p>需要在iSCSI目标服务器上安装Target Framework（TGT）软件包</p>
+<pre><code class="bash">apt-get install tgt -y
+# 检查tgt状态
+systemctl status tgt</code></pre>
+<h3 id="配置iSCSI-target"><a href="#配置iSCSI-target" class="headerlink" title="配置iSCSI target"></a>配置iSCSI target</h3><p>在iSCSI服务器上创建LUN（逻辑单元号）设备。LUN是启动器将连接到并在以后使用的后端存储设备。</p>
+<pre><code class="bash">/etc/tgt/conf.d/iscsi.conf</code></pre>
+<pre><code class="conf">&lt;target iqn.2019-11.example.com:lun1&gt;
+    backing-store /dev/sdb
+    initiator-address 192.168.220.138
+    incominguser iscsi-user password
+    outgoinguser iscsi-target secretpass
+&lt;/target&gt;</code></pre>
+<blockquote>
+<p><em>backing-store</em>: 本机存储设备作为后端iSCSI target<br>  <em>initiator-address</em>: 指定客户端ip地址可以访问<br>  <em>incominguser</em>: 用于保护LUN的传入用户名/密码 （可不加）<br>  <em>outgoinguser</em>: 用于相互CHAP身份验证的传出用户名/密码。（可不加）</p>
+</blockquote>
+<p>完成后保存并关闭文件。然后，重新启动TGT服务以应用配置更改：</p>
+<pre><code class="bash">systemctl restart tgt</code></pre>
+<p>检查配置是否生效以及符合预期</p>
+<pre><code class="bash">tgtadm --mode target --op show</code></pre>
+<h2 id="iscsi客户端"><a href="#iscsi客户端" class="headerlink" title="iscsi客户端"></a>iscsi客户端</h2><h3 id="安装iSCSI"><a href="#安装iSCSI" class="headerlink" title="安装iSCSI"></a>安装iSCSI</h3><p>在iSCSI使用挂载服务器上安装iSCSI启动器软件包。</p>
+<pre><code class="bash">apt-get install open-iscsi -y</code></pre>
+<ul>
+<li><p>可以通过修改文件，更改本机客户端的iqn</p>
+<pre><code class="bash">vim /etc/iscsi/initiatorname.iscsi
+## 修改 InitiatorName=后的值即可
+InitiatorName=iqn.1993-08.org.debian:01:1c5a149ad91</code></pre>
+</li>
+</ul>
+<p>对iSCSI target服务器运行目标发现以找出共享target。</p>
+<pre><code class="bash">iscsiadm -m discovery -t st -p 192.168.220.137</code></pre>
+<p>发现target后，会在<code>/etc/iscsi/nodes/</code>下生成对应target的iqn主机信息，同时<code>/etc/iscsi/send_targets</code>下也会生成指向该目录文件的软链接。</p>
+<pre><code class="bash">root@zqingfa-kylin:~# tree /etc/iscsi/nodes/
+
+/etc/iscsi/nodes/
+└── iqn.2019-11.example.com:lun1
+    └── 192.168.220.137,3260,1
+        └── default
+
+
+root@zqingfa-kylin:~# tree /etc/iscsi/send_targets
+/etc/iscsi/send_targets
+└── 192.168.220.137,3260
+    ├── iqn.2019-11.example.com:lun1,192.168.220.137,3260,1,default -&gt; /etc/iscsi/nodes/iqn.2019-11.example.com:lun1/192.168.220.137,3260,1
+    └── st_config
+
+
+vim /etc/iscsi/nodes/iqn.2019-11.example.com\:lun1/192.168.220.137\,3260\,1/default
+
+# 添加修改文件中如下对应的用户名与密码，如果有的话
+
+node.session.auth.authmethod = CHAP  
+node.session.auth.username = iscsi-user
+node.session.auth.password = password
+node.session.auth.username_in = iscsi-target
+node.session.auth.password_in = secretpass
+node.startup = automatic</code></pre>
+<p>重新启动iSCSI启动器服务以应用配置更改：</p>
+<pre><code class="bash">systemctl restart open-iscsi</code></pre>
+<ul>
+<li><p>使用<code>lsblk</code>命令即可查看当前的磁盘状态</p>
+</li>
+<li><p>在<code>target服务器</code>使用如下命令查看iscsi链接状态</p>
+<pre><code class="bash">root@zqingfa-kylin:/home/zqingfa/桌面# tgtadm --mode conn --op show --tid 1
+Session: 2
+    Connection: 0
+        Initiator: iqn.1993-08.org.debian:01:1c5a149ad91
+        IP Address: 192.168.220.138</code></pre>
+</li>
+</ul>
+<p>至此已经完成了iSCSI的部署与挂载使用。</p>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 zhangqingfa@qq.com </span>
     </div>
@@ -413,6 +519,18 @@
     <a  class="dashang" onclick="dashangToggle()">赏</a>
 </p>
 
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>kylin系统下架设iscsi服务与使用</p>
+    <p><span class="copy-title">文章字数:</span><span class="post-count">712</span></p>
+    <p><span class="copy-title">本文作者:</span><a  title="zhang qingfa">zhang qingfa</a></p>
+    <p><span class="copy-title">发布时间:</span>2020-04-03, 15:58:55</p>
+    <p><span class="copy-title">最后更新:</span>2020-04-07, 16:48:14</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/04/03/kylin%E7%B3%BB%E7%BB%9F%E4%B8%8B%E6%9E%B6%E8%AE%BEiscsi%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BD%BF%E7%94%A8/" title="kylin系统下架设iscsi服务与使用">https://zqingfa.github.io/2020/04/03/kylin%E7%B3%BB%E7%BB%9F%E4%B8%8B%E6%9E%B6%E8%AE%BEiscsi%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BD%BF%E7%94%A8/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
 
 
 

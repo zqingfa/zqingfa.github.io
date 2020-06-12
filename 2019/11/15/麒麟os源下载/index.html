@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>photo | zhangqf</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="photo | zhangqf">
+  <title>frp使用 | zhangqf</title>
+  <meta name="keywords" content=" frp ">
+  <meta name="description" content="frp使用 | zhangqf">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="简介zqingfa的个人博客，主要为了记录自己工作中遇到的一些问题，以及督促自己记录。">
 <meta property="og:type" content="website">
@@ -339,24 +339,38 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+        <article id="post-麒麟os源下载" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">photo</h1>
+        <h1 class="article-title">frp使用</h1>
     
     <div class="article-meta">
         
         
         
+        <span class="book">
+            
+                <a  data-rel="linux">linux</a>/
+            
+                <a  data-rel="network">network</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a class="color4">frp</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-12-05 02:07:50'>2019-12-05 02:07</time>
+        创建时间:<time class="date" title='更新时间: 2020-06-13 01:19:26'>2019-11-15 17:58</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:0</span>
+        <span>字数:422</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -386,7 +400,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#麒麟os源下载同步"><span class="toc-text">麒麟os源下载同步</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用wget工具远程下载"><span class="toc-text">使用wget工具远程下载</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -402,7 +416,105 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="麒麟os源下载同步"><a href="#麒麟os源下载同步" class="headerlink" title="麒麟os源下载同步"></a>麒麟os源下载同步</h1><h2 id="使用wget工具远程下载"><a href="#使用wget工具远程下载" class="headerlink" title="使用wget工具远程下载"></a>使用wget工具远程下载</h2><p>由于源比较大，这里只同步main的源</p>
+<pre><code class="bash">wget -c http://archive.kylinos.cn/kylin/KYLIN-ALL/pool/main/  -r -np -e robots=off -nc -R *armhf.deb,*i386.deb,*mips64el.deb,*index.html*,*amd64.deb,4.0.2sp3*  -b</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-a&lt;日志文件&gt;：</td>
+<td>在指定的日志文件中记录资料的执行过程；</td>
+</tr>
+<tr>
+<td>-A&lt;后缀名&gt;：</td>
+<td>指定要下载文件的后缀名，多个后缀名之间使用逗号进行分隔；</td>
+</tr>
+<tr>
+<td>-b：</td>
+<td>进行后台的方式运行wget；</td>
+</tr>
+<tr>
+<td>-B&lt;连接地址&gt;：</td>
+<td>设置参考的连接地址的基地地址；</td>
+</tr>
+<tr>
+<td>-c：</td>
+<td>继续执行上次终端的任务；</td>
+</tr>
+<tr>
+<td>-C&lt;标志&gt;：</td>
+<td>设置服务器数据块功能标志on为激活，off为关闭，默认值为on；</td>
+</tr>
+<tr>
+<td>-d：</td>
+<td>调试模式运行指令；</td>
+</tr>
+<tr>
+<td>-D&lt;域名列表&gt;：</td>
+<td>设置顺着的域名列表，域名之间用”，”分隔；</td>
+</tr>
+<tr>
+<td>-e&lt;指令&gt;：</td>
+<td>作为文件”.wgetrc”中的一部分执行指定的指令；</td>
+</tr>
+<tr>
+<td>-h：</td>
+<td>显示指令帮助信息；</td>
+</tr>
+<tr>
+<td>-i&lt;文件&gt;：</td>
+<td>从指定文件获取要下载的URL地址；</td>
+</tr>
+<tr>
+<td>-l&lt;目录列表&gt;：</td>
+<td>设置顺着的目录列表，多个目录用”，”分隔；</td>
+</tr>
+<tr>
+<td>-L：</td>
+<td>仅顺着关联的连接；</td>
+</tr>
+<tr>
+<td>-r：</td>
+<td>递归下载方式；</td>
+</tr>
+<tr>
+<td>-nc：</td>
+<td>文件存在时，下载文件不覆盖原有文件；</td>
+</tr>
+<tr>
+<td>-nv：</td>
+<td>下载时只显示更新和出错信息，不显示指令的详细执行过程；</td>
+</tr>
+<tr>
+<td>-q：</td>
+<td>不显示指令执行过程；</td>
+</tr>
+<tr>
+<td>-nh：</td>
+<td>不查询主机名称；</td>
+</tr>
+<tr>
+<td>-v：</td>
+<td>显示详细执行过程；</td>
+</tr>
+<tr>
+<td>-V：</td>
+<td>显示版本信息；</td>
+</tr>
+<tr>
+<td>–passive-ftp：</td>
+<td>使用被动模式PASV连接FTP服务器；</td>
+</tr>
+<tr>
+<td>–follow-ftp：</td>
+<td>从HTML文件中下载FTP连接文件。</td>
+</tr>
+</tbody></table>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 zhangqingfa@qq.com </span>
     </div>
@@ -413,6 +525,18 @@
     <a  class="dashang" onclick="dashangToggle()">赏</a>
 </p>
 
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>frp使用</p>
+    <p><span class="copy-title">文章字数:</span><span class="post-count">422</span></p>
+    <p><span class="copy-title">本文作者:</span><a  title="zhang qingfa">zhang qingfa</a></p>
+    <p><span class="copy-title">发布时间:</span>2019-11-15, 17:58:41</p>
+    <p><span class="copy-title">最后更新:</span>2020-06-13, 01:19:26</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/11/15/%E9%BA%92%E9%BA%9Fos%E6%BA%90%E4%B8%8B%E8%BD%BD/" title="frp使用">https://zqingfa.github.io/2019/11/15/%E9%BA%92%E9%BA%9Fos%E6%BA%90%E4%B8%8B%E8%BD%BD/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
 
 
 

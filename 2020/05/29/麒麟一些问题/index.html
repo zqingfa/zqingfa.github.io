@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>photo | zhangqf</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="photo | zhangqf">
+  <title>麒麟一些问题 | zhangqf</title>
+  <meta name="keywords" content=" 排查 ">
+  <meta name="description" content="麒麟一些问题 | zhangqf">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="简介zqingfa的个人博客，主要为了记录自己工作中遇到的一些问题，以及督促自己记录。">
 <meta property="og:type" content="website">
@@ -339,24 +339,38 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+        <article id="post-麒麟一些问题" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">photo</h1>
+        <h1 class="article-title">麒麟一些问题</h1>
     
     <div class="article-meta">
         
         
         
+        <span class="book">
+            
+                <a  data-rel="linux">linux</a>/
+            
+                <a  data-rel="kylin">kylin</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a class="color3">排查</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-12-05 02:07:50'>2019-12-05 02:07</time>
+        创建时间:<time class="date" title='更新时间: 2020-06-13 01:19:26'>2020-05-29 10:58</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:0</span>
+        <span>字数:157</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -386,7 +400,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#麒麟一些问题"><span class="toc-text">麒麟一些问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-解决光盘直接挂载不能使用源的问题"><span class="toc-text">1. 解决光盘直接挂载不能使用源的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-sp3系统不能执行脚本"><span class="toc-text">2. sp3系统不能执行脚本</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -402,7 +416,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="麒麟一些问题"><a href="#麒麟一些问题" class="headerlink" title="麒麟一些问题"></a>麒麟一些问题</h1><p>主要是麒麟遇到的一些问题</p>
+<h2 id="1-解决光盘直接挂载不能使用源的问题"><a href="#1-解决光盘直接挂载不能使用源的问题" class="headerlink" title="1. 解决光盘直接挂载不能使用源的问题"></a>1. 解决光盘直接挂载不能使用源的问题</h2><pre><code class="bash">echo &quot;deb file:///media/kylin/kylin-os-4.0.2 juniper main restricted universe multiverse&quot; &gt;&gt; /etc/apt/sources.list
+
+apt-get --allow-unauthenticated update
+apt-get --allow-unauthenticated install -y mysql-server
+</code></pre>
+<p>如需永久化则</p>
+<pre><code class="bash">echo &quot;deb [trusted=yes] file:///media/kylin/kylin-os-4.0.2 juniper main restricted universe multiverse&quot; &gt;&gt; /etc/apt/sources.list</code></pre>
+<h2 id="2-sp3系统不能执行脚本"><a href="#2-sp3系统不能执行脚本" class="headerlink" title="2. sp3系统不能执行脚本"></a>2. sp3系统不能执行脚本</h2><p>由于内部一些安全机制，导致不能直接在笔记本上执行自行编写的脚本文件。可通过一下命令放行。</p>
+<pre><code class="bash">sudo setstatus softmode -p</code></pre>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 zhangqingfa@qq.com </span>
     </div>
@@ -413,6 +437,18 @@
     <a  class="dashang" onclick="dashangToggle()">赏</a>
 </p>
 
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>麒麟一些问题</p>
+    <p><span class="copy-title">文章字数:</span><span class="post-count">157</span></p>
+    <p><span class="copy-title">本文作者:</span><a  title="zhang qingfa">zhang qingfa</a></p>
+    <p><span class="copy-title">发布时间:</span>2020-05-29, 10:58:41</p>
+    <p><span class="copy-title">最后更新:</span>2020-06-13, 01:19:26</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/05/29/%E9%BA%92%E9%BA%9F%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/" title="麒麟一些问题">https://zqingfa.github.io/2020/05/29/%E9%BA%92%E9%BA%9F%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
 
 
 

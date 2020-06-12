@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>photo | zhangqf</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="photo | zhangqf">
+  <title>rh练习2 | zhangqf</title>
+  <meta name="keywords" content=" redhat ">
+  <meta name="description" content="rh练习2 | zhangqf">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="简介zqingfa的个人博客，主要为了记录自己工作中遇到的一些问题，以及督促自己记录。">
 <meta property="og:type" content="website">
@@ -339,24 +339,38 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+        <article id="post-rh练习2" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">photo</h1>
+        <h1 class="article-title">rh练习2</h1>
     
     <div class="article-meta">
         
         
         
+        <span class="book">
+            
+                <a  data-rel="linux">linux</a>/
+            
+                <a  data-rel="system">system</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a class="color2">redhat</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-12-05 02:07:50'>2019-12-05 02:07</time>
+        创建时间:<time class="date" title='更新时间: 2020-06-13 01:19:26'>2020-04-07 15:19</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:0</span>
+        <span>字数:451</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -386,7 +400,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#redhat练习1"><span class="toc-text">redhat练习1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-配置-SELinux-server-desktop"><span class="toc-text">1.配置 SELinux(server,desktop)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-配置SSH访问-server-desktop"><span class="toc-text">2.配置SSH访问(server,desktop)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-自定义用户环境-server-desktop"><span class="toc-text">3.自定义用户环境(server,desktop)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-配置端口转发"><span class="toc-text">4.配置端口转发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-配置聚合链路-server-desktop"><span class="toc-text">5.配置聚合链路(server,desktop)</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -402,7 +416,28 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="redhat练习1"><a href="#redhat练习1" class="headerlink" title="redhat练习1"></a>redhat练习1</h1><h2 id="1-配置-SELinux-server-desktop"><a href="#1-配置-SELinux-server-desktop" class="headerlink" title="1.配置 SELinux(server,desktop)"></a>1.配置 SELinux(server,desktop)</h2><p>SELinux 必须在两个系统server 和 desktop中运行于 Enforcing 模式</p>
+<pre><code class="bash">setenforce 1
+vim /etc/selinux/config
+    SELINUX=enforcing</code></pre>
+<h2 id="2-配置SSH访问-server-desktop"><a href="#2-配置SSH访问-server-desktop" class="headerlink" title="2.配置SSH访问(server,desktop)"></a>2.配置SSH访问(server,desktop)</h2><p>按以下要求配置SSH访问:<br>用户能够从域 domainX.example.com内的客户端通过SSH远程访问您的两个虚拟机系统,在域 my133t.org 内的客户端不能访问您的两个虚拟机系统</p>
+<pre><code class="bash">firewall-cmd --permanent --add-rich-rule &#39;rule family=ipv4 source address=&quot;172.26.16.0/24&quot; service name=&quot;ssh&quot; reject&#39;
+firewall-cmd --reload
+# 第二种方式
+echo &quot;sshd : 172.26.16.0/255.255.255.0&quot; &gt;&gt; /etc/hosts.deny</code></pre>
+<h2 id="3-自定义用户环境-server-desktop"><a href="#3-自定义用户环境-server-desktop" class="headerlink" title="3.自定义用户环境(server,desktop)"></a>3.自定义用户环境(server,desktop)</h2><p>在系统 server 和 desktop上创建自定义命令名为 qstat 此自定义命令将执行以下命令:<br><code>/bin/ps -Ao pid,tt,user,fname,rsz</code>此命令对系统中所有用户有效。</p>
+<pre><code class="bash">echo &#39;alias qstat=&quot;/bin/ps -Ao pid,tt,user,fname,rsz&quot;&#39; &gt;&gt; /etc/profile
+source /etc/profile</code></pre>
+<h2 id="4-配置端口转发"><a href="#4-配置端口转发" class="headerlink" title="4.配置端口转发"></a>4.配置端口转发</h2><p>在系统 server 配置端口转发， 要求如下：<br>在 172.25.X.0/24 网络中的系统， 访问 server 的本地端口 5423 将被转发到80<br>此设置必须永久有效</p>
+<pre><code class="bash">firewall-cmd --permanent --add-rich-rule &#39;rule family=ipv4 source address=&quot;172.25.16.0/24&quot; forward-port port=5423 protocol=tcp to-port=80&#39;
+
+firewall-cmd --reload
+
+firewall-cmd --list-all</code></pre>
+<h2 id="5-配置聚合链路-server-desktop"><a href="#5-配置聚合链路-server-desktop" class="headerlink" title="5.配置聚合链路(server,desktop)"></a>5.配置聚合链路(server,desktop)</h2><p>在 server.domainX.example.com 和 desktop.domainX.example.com之间按以下要求配置一个链路：<br>此链路使用接口 eno1 和 eno2<br>此链路在一个接口失效时仍然能工作<br>此链路在 server 使用下面的地址 172.16.X.25/255.255.255.0<br>此链路在 desktop 使用下面的地址 172.16.X.35/255.255.255.0<br>此链路在系统重启之后依然保持正常状态  </p>
+<pre><code class="bash">cd /usr/share/doc/team*
+</code></pre>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 zhangqingfa@qq.com </span>
     </div>
@@ -413,6 +448,18 @@
     <a  class="dashang" onclick="dashangToggle()">赏</a>
 </p>
 
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>rh练习2</p>
+    <p><span class="copy-title">文章字数:</span><span class="post-count">451</span></p>
+    <p><span class="copy-title">本文作者:</span><a  title="zhang qingfa">zhang qingfa</a></p>
+    <p><span class="copy-title">发布时间:</span>2020-04-07, 15:19:25</p>
+    <p><span class="copy-title">最后更新:</span>2020-06-13, 01:19:26</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/04/07/rh%E7%BB%83%E4%B9%A02/" title="rh练习2">https://zqingfa.github.io/2020/04/07/rh%E7%BB%83%E4%B9%A02/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
 
 
 
