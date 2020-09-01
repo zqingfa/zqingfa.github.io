@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>zhangqf</title>
+  <title>golang环境设置 | zhangqf</title>
   <meta name="keywords" content="">
-  <meta name="description" content="zhangqf">
+  <meta name="description" content="golang环境设置 | zhangqf">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="简介zqingfa的个人博客，主要为了记录自己工作中遇到的一些问题，以及督促自己记录。">
 <meta property="og:type" content="website">
@@ -50,7 +50,7 @@
 </div>
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/" class="avatar_target">
     <img class="avatar" src="/img/avatar.jpg" />
@@ -345,12 +345,56 @@
         </div>
     </div>
 </aside>
-<div class="post index">
+<div class="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-golang环境设置" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-Blog"><span class="toc-text">Why Blog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对博客的理解"><span class="toc-text">对博客的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于zqingfa"><span class="toc-text">关于zqingfa</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#博客平台"><span class="toc-text">博客平台</span></a></li></ol></li></ol>
+        <h1 class="article-title">golang环境设置</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2020-09-02 01:07:57'>2020-09-02 00:36</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:227</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                评论:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#golang环境设置"><span class="toc-text">golang环境设置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux系统"><span class="toc-text">Linux系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装golang1-15"><span class="toc-text">安装golang1.15</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用golang1-15"><span class="toc-text">使用golang1.15</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编译验证"><span class="toc-text">编译验证</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -363,36 +407,77 @@
     }
 </style>
 </div>
-            <h1 id="Why-Blog"><a href="#Why-Blog" class="headerlink" title="Why Blog"></a>Why Blog</h1><h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p>喜欢写Blog的人，会经历三个阶段。</p>
-<blockquote>
-<p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。</p>
-</blockquote>
-<blockquote>
-<p>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</p>
-</blockquote>
-<blockquote>
-<p>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
-</blockquote>
-<p>我们每个人的在网络上产生的数据越来越多，这些信息是我们在互联网上存在过的痕迹，值得我们认真对待。但是它们被分散分布在各个网站上。很多时候我们很难将它们聚合在一起，而且各个网站的信息排布方式也没有办法自由控制，所以我们需要一个可以由自己主宰的空间——博客。</p>
-<p>通过博客，我们可以记录自己的生活和成长的轨迹。它不像 Twitter 那样碎片化，也不像 Facebook 那样关系化，它是私人的空间。</p>
-<h2 id="关于zqingfa"><a href="#关于zqingfa" class="headerlink" title="关于zqingfa"></a>关于zqingfa</h2><p><strong>zqingfa.github.io</strong> 是zqingfa的个人站。</p>
-<p>到目前为止已经写了<code class="article_number"></code>篇文章， 共<code class="site_word_count"></code>字。</p>
-<p>本站访问人数：<code class="site_uv"></code>人次 ， 访问量：<code class="site_pv"></code>次</p>
-<h2 id="博客平台"><a href="#博客平台" class="headerlink" title="博客平台"></a>博客平台</h2><p>这个博客通过 <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> 生成，部署在 <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>，主题 <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank" rel="noopener">3-hexo</a> 已经在github上开源</p>
-<p>主要功能：</p>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="golang环境设置"><a href="#golang环境设置" class="headerlink" title="golang环境设置"></a>golang环境设置</h1><p>由于经常需要设置go环境，因此在此记录下</p>
+<h2 id="Linux系统"><a href="#Linux系统" class="headerlink" title="Linux系统"></a>Linux系统</h2><p>在Linux系统下安装1.15版本的golang。</p>
+<h3 id="安装golang1-15"><a href="#安装golang1-15" class="headerlink" title="安装golang1.15"></a>安装golang1.15</h3><pre><code class="bash"># 下载并解压1.15版本的golang
+sudo -s
+wget https://studygolang.com/dl/golang/go1.15.linux-amd64.tar.gz
+tar -C /usr/local/share/ -xzf go1.15.linux-amd64.tar.gz
+# 设置环境变量
+echo  &#39;GOROOT=/usr/local/share/go&#39; &gt;&gt; /etc/profile
+echo  &#39;PATH=$PATH:$GOROOT/bin&#39; &gt;&gt; /etc/profile
+source /etc/profile
+go env -w GO111MODULE=on
+go env -w GOPROXY=https://mirrors.aliyun.com/goproxy/,direct
+# 验证是否生效
+go version
+</code></pre>
+<h3 id="使用golang1-15"><a href="#使用golang1-15" class="headerlink" title="使用golang1.15"></a>使用golang1.15</h3><ol>
+<li><p>初始化</p>
 <ul>
-<li>搜索支持文章标题、标签(#标签)、作者(@作者)</li>
-<li>pad/手机等移动端适配</li>
-<li>页面全局快捷键 <a href='http://yelog.org/2017/03/24/3-hexo-shortcuts/' target="_blank" rel="noopener">3-hexo快捷键说明</a></li>
+<li>项目在go path中<br><code>go mod init</code></li>
+<li>项目不在go path中<br><code>go mod init &lt;项目名&gt;</code></li>
 </ul>
+</li>
+<li><p>下载依赖<br><code>go mod tidy</code></p>
+</li>
+<li><p>保存到vendor<br><code>go mod vendor</code></p>
+</li>
+<li><p>编译时使用vendor<br><code>go build -mod=vendor</code></p>
+</li>
+</ol>
+<h3 id="编译验证"><a href="#编译验证" class="headerlink" title="编译验证"></a>编译验证</h3><p>写一个<code>hello-world.go</code></p>
+<pre><code class="bash">cat &gt; hello-world.go &lt;&lt;EOF
+package main
 
-        </article>
-        
-        <p>
-            <a  class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
-        
-        
+import &quot;fmt&quot;
+
+func main() {
+    fmt.Println(&quot;Hello, World!&quot;)
+}
+EOF</code></pre>
+<p>执行，验证结果</p>
+<pre><code class="bash">$ go run hello-world.go
+Hello, World!</code></pre>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 zhangqingfa@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>golang环境设置</p>
+    <p><span class="copy-title">文章字数:</span><span class="post-count">227</span></p>
+    <p><span class="copy-title">本文作者:</span><a  title="zhang qingfa">zhang qingfa</a></p>
+    <p><span class="copy-title">发布时间:</span>2020-09-02, 00:36:21</p>
+    <p><span class="copy-title">最后更新:</span>2020-09-02, 01:07:57</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/09/02/golang%E7%8E%AF%E5%A2%83%E8%AE%BE%E7%BD%AE/" title="golang环境设置">https://zqingfa.github.io/2020/09/02/golang%E7%8E%AF%E5%A2%83%E8%AE%BE%E7%BD%AE/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
     <div id="comments"></div>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 
@@ -412,6 +497,13 @@
         gitalk.render('comments')
     })
 </script>
+
+
+
+
+    
+
+
 
 
     </div>

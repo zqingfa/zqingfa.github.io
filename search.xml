@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>golang环境设置</title>
+      <link href="/2020/09/02/golang%E7%8E%AF%E5%A2%83%E8%AE%BE%E7%BD%AE/"/>
+      <url>/2020/09/02/golang%E7%8E%AF%E5%A2%83%E8%AE%BE%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<h1 id="golang环境设置"><a href="#golang环境设置" class="headerlink" title="golang环境设置"></a>golang环境设置</h1><p>由于经常需要设置go环境，因此在此记录下</p><h2 id="Linux系统"><a href="#Linux系统" class="headerlink" title="Linux系统"></a>Linux系统</h2><p>在Linux系统下安装1.15版本的golang。</p><h3 id="安装golang1-15"><a href="#安装golang1-15" class="headerlink" title="安装golang1.15"></a>安装golang1.15</h3><pre><code class="bash"># 下载并解压1.15版本的golangsudo -swget https://studygolang.com/dl/golang/go1.15.linux-amd64.tar.gztar -C /usr/local/share/ -xzf go1.15.linux-amd64.tar.gz# 设置环境变量echo  &#39;GOROOT=/usr/local/share/go&#39; &gt;&gt; /etc/profileecho  &#39;PATH=$PATH:$GOROOT/bin&#39; &gt;&gt; /etc/profilesource /etc/profilego env -w GO111MODULE=ongo env -w GOPROXY=https://mirrors.aliyun.com/goproxy/,direct# 验证是否生效go version</code></pre><h3 id="使用golang1-15"><a href="#使用golang1-15" class="headerlink" title="使用golang1.15"></a>使用golang1.15</h3><ol><li><p>初始化</p><ul><li>项目在go path中<br><code>go mod init</code></li><li>项目不在go path中<br><code>go mod init &lt;项目名&gt;</code></li></ul></li><li><p>下载依赖<br><code>go mod tidy</code></p></li><li><p>保存到vendor<br><code>go mod vendor</code></p></li><li><p>编译时使用vendor<br><code>go build -mod=vendor</code></p></li></ol><h3 id="编译验证"><a href="#编译验证" class="headerlink" title="编译验证"></a>编译验证</h3><p>写一个<code>hello-world.go</code></p><pre><code class="bash">cat &gt; hello-world.go &lt;&lt;EOFpackage mainimport &quot;fmt&quot;func main() {    fmt.Println(&quot;Hello, World!&quot;)}EOF</code></pre><p>执行，验证结果</p><pre><code class="bash">$ go run hello-world.goHello, World!</code></pre>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>麒麟一些问题</title>
       <link href="/2020/05/29/%E9%BA%92%E9%BA%9F%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/"/>
       <url>/2020/05/29/%E9%BA%92%E9%BA%9F%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
