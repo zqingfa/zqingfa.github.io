@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkblog=self.webpackChunkblog||[]).push([[5485],{92211:function(e){e.exports=JSON.parse('{"title":"React","slug":"/category/react","permalink":"/en/docs/category/react","navigation":{"previous":{"title":"Pinia","permalink":"/en/docs/pinia"},"next":{"title":"React\u4e4bhooks","permalink":"/en/docs/react-hooks"}}}')}}]);
